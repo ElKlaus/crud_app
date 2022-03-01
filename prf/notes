@@ -1,0 +1,22 @@
+ajax
+postgress
+
+
+
+Создать виджет CRUD таблица на JS. Пример https://www.jeasyui.com/demo/main/index.php. 
+Только кнопки редактировать и удалить должны быть в конце строки. 
+Изменение таблицы происходит по ajax. Виждет должен быть универсальным, чтобы при его инициализации можно было указать ajax sorce для каждого действия.
+Так же в таблице могут быть различные виды полей (input(text,number,date), select, multiselect и т.д)
+---FTP + ssh:
+  ctrlalbq.beget.tech
+  ctrlalbq_sergei
+  r8D%klyz
+
+Домен:
+  fortuna-vl.ru/test
+
+
+---database
+  https://bullet.beget.com/phpMyAdmin/index.php
+  ctrlalbq_sergei
+  qD7&U35L
