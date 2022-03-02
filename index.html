@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<!-- <base href="/"> -->
 
-	<title>CRUD Application</title>
+	<title>Jquery CRUD Application</title>
 	<meta name="description" content="Simple Starter Description">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,27 +16,61 @@
 
 	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-reboot.min.css">
 	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/media.css">
 
 	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+	<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<script src="js/common.js" defer></script>
 
 </head>
 
 <body>
+	<div class="container my-3">
+		<h1 class="text-center">Jquery CRUD Application</h1>
+		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#completeModal">
+			Add new user
+		</button>
+	</div>
 
-	<div class="container"><br>
-		<div class="row">
-			<div class="col-lg-8">
-				<input type="text" name="title" class="title"><br>
-				<textarea name="content" class="content" cols="30" rows="10"></textarea><br>
-				<button class="otpravka">Submit</button>
+	<!-- Button trigger modal -->
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="completeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">New user</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="completename" class="form-label">Name</label>
+						<input type="text" class="form-control" id="completename" placeholder="Enter your name">
+					</div>
+					<div class="mb-3">
+						<label for="completeemail" class="form-label">Email</label>
+						<input type="email" class="form-control" id="completeemail" placeholder="Enter your email">
+					</div>
+					<div class="mb-3">
+						<label for="completemobile" class="form-label">Mobile</label>
+						<input type="text" class="form-control" id="completemobile" placeholder="Enter your mobile number">
+					</div>
+					<div class="mb-3">
+						<label for="completeplace" class="form-label">Place</label>
+						<input type="text" class="form-control" id="completeplace" placeholder="Enter your place">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-dark">Submit</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
