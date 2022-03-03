@@ -34,6 +34,8 @@
 		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#completeModal">
 			Add new user
 		</button>
+
+		<div id="displayDataTable"></div>
 	</div>
 
 	<!-- Button trigger modal -->
@@ -81,6 +83,23 @@
 			var mobileAdd = $('#completemobile').val();
 			var placeAdd = $('#completeplace').val();
 
+
+			// Display function
+			function displayData() {
+				var displayData = "true";
+
+				$.ajax({
+					url: "display.php",
+					type: "post",
+					data: {
+						displaySend: displayData
+					},
+					success: function(data, status) {
+						$('#displayDataTable').html(data);
+					}
+				});
+			};
+
 			$.ajax({
 				url: "insert.php",
 				type: "post",
@@ -92,7 +111,9 @@
 				},
 				success: function(data, status) {
 					// function to display data
-					console.log(status, nameAdd, emailAdd, mobileAdd, placeAdd);
+					// console.log(status, nameAdd, emailAdd, mobileAdd, placeAdd);
+
+					displayData();
 				}
 			});
 		};
