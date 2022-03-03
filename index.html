@@ -31,14 +31,16 @@
 <body>
 	<div class="container my-3">
 		<h1 class="text-center">Jquery CRUD Application</h1>
-		<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#completeModal">
+
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-dark my-3" data-bs-toggle="modal" data-bs-target="#completeModal">
 			Add new user
 		</button>
 
 		<div id="displayDataTable"></div>
 	</div>
 
-	<!-- Button trigger modal -->
+
 
 
 	<!-- Modal -->
@@ -56,7 +58,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="completeemail" class="form-label">Email</label>
-						<input type="email" class="form-control" id="completeemail" placeholder="Enter your email">
+						<input type="text" class="form-control" id="completeemail" placeholder="Enter your email">
 					</div>
 					<div class="mb-3">
 						<label for="completemobile" class="form-label">Mobile</label>
@@ -76,29 +78,31 @@
 	</div>
 
 	<script>
+		$(document).ready(function() {
+			displayData();
+		});
+
+		// Display function
+		const displayData = function() {
+			var displayData = "true"; //Поправить
+
+			$.ajax({
+				url: "display.php",
+				type: "post",
+				data: {
+					displaySend: displayData
+				},
+				success: function(data, status) {
+					$('#displayDataTable').html(data);
+				}
+			});
+		};
 
 		const addUser = function () {
-			var nameAdd = $('#completename').val();
-			var emailAdd = $('#completeemail').val();
-			var mobileAdd = $('#completemobile').val();
-			var placeAdd = $('#completeplace').val();
-
-
-			// Display function
-			function displayData() {
-				var displayData = "true";
-
-				$.ajax({
-					url: "display.php",
-					type: "post",
-					data: {
-						displaySend: displayData
-					},
-					success: function(data, status) {
-						$('#displayDataTable').html(data);
-					}
-				});
-			};
+			const nameAdd   = $('#completename').val(),
+						emailAdd  = $('#completeemail').val(),
+			 			mobileAdd = $('#completemobile').val(),
+			 			placeAdd  = $('#completeplace').val();
 
 			$.ajax({
 				url: "insert.php",
@@ -110,15 +114,27 @@
 					placeSend: placeAdd
 				},
 				success: function(data, status) {
-					// function to display data
-					// console.log(status, nameAdd, emailAdd, mobileAdd, placeAdd);
-
 					displayData();
 				}
 			});
 		};
 
+		// Delete record
+		function deleteUser(deleteId) {
+			console.log('Hello from deleteUser');
 
+			$.ajax({
+				url: "delete.php",
+				type: "post",
+				data: {
+					deleteSend: deleteId,
+				},
+				success: function(data, status) {
+					displayData();
+
+				}
+			});
+		};
 
 	</script>
 </body>

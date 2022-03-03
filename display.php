@@ -10,6 +10,7 @@
         <th scope="col">Email</th>
         <th scope="col">Mobile</th>
         <th scope="col">Place</th>
+        <th scope="col">Operations</th>
       </tr>
     </thead>';
 
@@ -29,6 +30,10 @@
         <td>'.$email.'</td>
         <td>'.$mobile.'</td>
         <td>'.$place.'</td>
+        <td>
+          <button class="btn btn-dark">Update</button>
+          <button class="btn btn-danger" onklick="deleteUser('.$id.')">Delete</button>
+        </td>
       </tr>';
     };
 
