@@ -66,11 +66,39 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-dark">Submit</button>
+					<button type="button" class="btn btn-dark" onclick="addUser()">Submit</button>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<script>
+
+		const addUser = function () {
+			var nameAdd = $('#completename').val();
+			var emailAdd = $('#completeemail').val();
+			var mobileAdd = $('#completemobile').val();
+			var placeAdd = $('#completeplace').val();
+
+			$.ajax({
+				url: "insert.php",
+				type: "post",
+				data: {
+					nameSend: nameAdd,
+					emailSend: emailAdd,
+					mobileSend: mobileAdd,
+					placeSend: placeAdd
+				},
+				success: function(data, status) {
+					// function to display data
+					console.log(status, nameAdd, emailAdd, mobileAdd, placeAdd);
+				}
+			});
+		};
+
+
+
+	</script>
 </body>
 </html>
