@@ -6,10 +6,9 @@
 
   if(isset($_POST['nameSend']) && isset($_POST['emailSend']) && isset($_POST['mobileSend']) && isset($_POST['placeSend'])) {
 
-    $sql="insert into `users` (name, email, mobile, place) values ('$nameSend', '$emailSend', '$mobileSend', '$placeSend')";
+    $sql = "insert into `users` (name, email, mobile, place) values ('$nameSend', '$emailSend', '$mobileSend', '$placeSend')";
 
-    $result=mysqli_query($con, $sql);
-
+    $result = mysqli_query($con, $sql);
   };
 
 

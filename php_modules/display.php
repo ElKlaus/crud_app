@@ -6,11 +6,11 @@
     <thead>
       <tr>
         <th scope="col">№</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Mobile</th>
-        <th scope="col">Place</th>
-        <th scope="col">Operations</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">Место проживания</th>
+        <th scope="col">Редактировать запись</th>
       </tr>
     </thead>';
 
@@ -32,8 +32,8 @@
         <td>'.$mobile.'</td>
         <td>'.$place.'</td>
         <td>
-          <button class="btn btn-dark" onclick="getDetails('.$id.')">Update</button>
-          <button class="btn btn-danger" onclick="deleteUser('.$id.')">Delete</button>
+          <button class="btn btn-dark" onclick="getDetails('.$id.')">Изменить</button>
+          <button class="btn btn-danger" onclick="deleteUser('.$id.')">Удалить</button>
         </td>
       </tr>';
 
