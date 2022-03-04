@@ -104,7 +104,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-dark">Update</button>
+					<button type="button" class="btn btn-dark" onclick="updateDetails()">Update</button>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 					<input type="hidden" id="hiddendata">
 				</div>
@@ -150,6 +150,8 @@
 					placeSend: placeAdd
 				},
 				success: function(data, status) {
+					$('#completeModal').modal('hide');
+
 					displayData();
 				}
 			});
@@ -172,20 +174,39 @@
 
 		// Update function
 		const getDetails = function(updateId) {
-			console.log('Hi, from getDetails');
-
 			$('#hiddendata').val(updateId);
 
 			$.post("update.php", {updateId: updateId}, function(data, status){
 				const userId = JSON.parse(data);
 
-				$('updatename').val(userId.name);
-				$('updateemail').val(userId.email);
-				$('updatemobile').val(userId.mobile);
-				$('updateplace').val(userId.place);
+				$('#updatename').val(userId.name);
+				$('#updateemail').val(userId.email);
+				$('#updatemobile').val(userId.mobile);
+				$('#updateplace').val(userId.place);
 			});
 
 			$('#updateModal').modal("show");
+		};
+
+		// oncklick update event function
+		const updateDetails = function() {
+			const updateName   = $('#updatename').val(),
+						updateEmail  = $('#updateemail').val(),
+						updateMobile = $('#updatemobile').val(),
+						updatePlace  = $('#updateplace').val(),
+						hiddenData	 = $('#hiddendata').val();
+
+			$.post("update.php", {
+				updateName: updateName,
+				updateEmail: updateEmail,
+				updateMobile: updateMobile,
+				updatePlace: updatePlace,
+				hiddenData: hiddenData,
+			}, function(data, status) {
+				$('#updateModal').modal('hide');
+
+				displayData();
+			});
 		};
 
 	</script>
