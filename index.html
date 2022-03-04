@@ -77,6 +77,41 @@
 		</div>
 	</div>
 
+	<!-- Modal update -->
+	<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Update details</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="updatename" class="form-label">Name</label>
+						<input type="text" class="form-control" id="updatename" placeholder="Enter your name">
+					</div>
+					<div class="mb-3">
+						<label for="updateemail" class="form-label">Email</label>
+						<input type="text" class="form-control" id="updateemail" placeholder="Enter your email">
+					</div>
+					<div class="mb-3">
+						<label for="updatemobile" class="form-label">Mobile</label>
+						<input type="text" class="form-control" id="updatemobile" placeholder="Enter your mobile number">
+					</div>
+					<div class="mb-3">
+						<label for="updateplace" class="form-label">Place</label>
+						<input type="text" class="form-control" id="updateplace" placeholder="Enter your place">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-dark">Update</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+					<input type="hidden" id="hiddendata">
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script>
 		$(document).ready(function() {
 			displayData();
@@ -84,7 +119,7 @@
 
 		// Display function
 		const displayData = function() {
-			var displayData = "true"; //Поправить
+			const displayData = "true"; //Поправить
 
 			$.ajax({
 				url: "display.php",
@@ -98,6 +133,7 @@
 			});
 		};
 
+		// Add user
 		const addUser = function () {
 			const nameAdd   = $('#completename').val(),
 						emailAdd  = $('#completeemail').val(),
@@ -120,9 +156,7 @@
 		};
 
 		// Delete record
-		function deleteUser(deleteId) {
-			console.log(deleteId);
-
+		const deleteUser = function(deleteId) {
 			$.ajax({
 				url: "delete.php",
 				type: "post",
@@ -134,6 +168,24 @@
 
 				}
 			});
+		};
+
+		// Update function
+		const getDetails = function(updateId) {
+			console.log('Hi, from getDetails');
+
+			$('#hiddendata').val(updateId);
+
+			$.post("update.php", {updateId: updateId}, function(data, status){
+				const userId = JSON.parse(data);
+
+				$('updatename').val(userId.name);
+				$('updateemail').val(userId.email);
+				$('updatemobile').val(userId.mobile);
+				$('updateplace').val(userId.place);
+			});
+
+			$('#updateModal').modal("show");
 		};
 
 	</script>

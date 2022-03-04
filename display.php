@@ -16,6 +16,7 @@
 
     $sql = "Select * from `users`";
     $result=mysqli_query($con,$sql);
+    $number = 1;
 
     while($row=mysqli_fetch_assoc($result)) {
       $id = $row['id'];
@@ -25,16 +26,18 @@
       $place = $row['place'];
 
       $table.='<tr>
-        <td scope="row">'.$id.'</td>
+        <td scope="row">'.$number.'</td>
         <td>'.$name.'</td>
         <td>'.$email.'</td>
         <td>'.$mobile.'</td>
         <td>'.$place.'</td>
         <td>
-          <button class="btn btn-dark">Update</button>
+          <button class="btn btn-dark" onclick="getDetails('.$id.')">Update</button>
           <button class="btn btn-danger" onclick="deleteUser('.$id.')">Delete</button>
         </td>
       </tr>';
+
+      $number++;
     };
 
     $table.='</table>';
