@@ -32,7 +32,7 @@
         <td>'.$place.'</td>
         <td>
           <button class="btn btn-dark">Update</button>
-          <button class="btn btn-danger" onklick="deleteUser('.$id.')">Delete</button>
+          <button class="btn btn-danger" onclick="deleteUser('.$id.')">Delete</button>
         </td>
       </tr>';
     };

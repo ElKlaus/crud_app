@@ -1,7 +1,9 @@
 <?php
   include 'connect.php';
 
-  if($isset($_POST['deleteSend'])) {
+  // echo $_POST['deleteSend'];
+
+  if(isset($_POST['deleteSend'])) {
     $unique = $_POST['deleteSend'];
 
     $sql = "delete from `users` where id=$unique";
